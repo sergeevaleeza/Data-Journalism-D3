@@ -37,19 +37,17 @@ d3.csv("/assets/data/data.csv").then(function(assetsData) {
 
     // create scales
     var xLinearScale = d3.scaleLinear()
-//      .domain([0, d3.max(assetsData, d => d.poverty)])
       .range([0, width]);
     
     var yLinearScale = d3.scaleLinear()
-//      .domain([0, d3.max(assetsData, d => d.healthcare)])
       .range([height, 0]);
       
     // axis label
     var bottomAxis = d3.axisBottom(xLinearScale);
     var leftAxis = d3.axisLeft(yLinearScale);
     
-    xLinearScale.domain([0, d3.max(assetsData, function(data){
-		return +data.poverty + 10;
+    xLinearScale.domain([8, d3.max(assetsData, function(data){
+		return +data.poverty;
     })]);
 
     yLinearScale.domain([0, d3.max(assetsData, function(data){
